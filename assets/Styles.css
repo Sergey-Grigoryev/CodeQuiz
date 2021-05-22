@@ -1,0 +1,54 @@
+.timer, .secondsLeft {
+    float: right;  
+    margin: 5px;
+}
+
+.questions, .feedback {
+    display: flex;
+    justify-content: center;
+    margin: 5vh auto;
+}
+
+.startQuizDiv {
+    display: flex;
+    justify-content: center; 
+    width: 25vw;
+    margin: auto;
+
+}
+
+.startQuizBtn {
+    display: flex;
+    justify-content: flex-start;
+    background-color: blueviolet;
+    color: whitesmoke;
+    border-radius: 5px;
+
+}
+.multiChoice {
+    display: none;
+    justify-content: flex-start; 
+    flex-direction: column;
+    align-items: flex-start;
+    width: 25vw;
+    margin: auto;
+}
+.multiChoiceBtn {
+    display: flex;     /* change after start btn click */
+    margin-bottom: 5px;
+    background-color: blueviolet;
+    color: whitesmoke;
+    border-radius: 5px;
+}
+
+.feedback {
+    display: none;          /*change after quiz starts*/ 
+    background-color: rgba(128, 128, 128, 0.5);
+    padding: 5px 0 5px 0;
+    width: 25vw;
+    border-radius: 5px;
+}
+
+.pastScores {
+    display: none; /*change on eventListener click 'View High Scores' */ 
+}
