@@ -11,7 +11,7 @@ var currentQuestion = {};
 
 // question objects
 var question1 = [
-    {question:"first question"}, 
+    {question:"First question"}, 
     {choice1:"option 1", choice2:"option 2", choice3:"option 3", choice4:"option 4"}, 
     {correct:"option 1"}];
 var question2 = [
@@ -22,9 +22,31 @@ var question3 = [
     {question:"Third question"}, 
     {choice1:"option 1", choice2:"option 2", choice3:"option 3", choice4:"option 4"}, 
     {correct:"option 3"}];
+var question4 = [
+    {question:"Fourth question"}, 
+    {choice1:"option 1", choice2:"option 2", choice3:"option 3", choice4:"option 4"}, 
+    {correct:"option 4"}];
+var finalScore = {};
 
+    // 60 sec timer
+let timeRemaining = 59;
+function duduct10() {
+    timeRemaining -= 10;
+};
+function timer () {    
+    var timeInterval = setInterval(function() {
+        secondsLeft.textContent = timeRemaining;
+        timeRemaining--;
+        if (timeRemaining < 0) {
+            clearInterval(timeInterval);
+        };
+    }, 1000);
+};
+
+    //start of quiz
 startQuizBtn.addEventListener("click", function startQuiz(event) {
     event.preventDefault();
+    timer();
     startQuizDiv.style.display = "none";
 
     // show the question
@@ -49,15 +71,7 @@ startQuizBtn.addEventListener("click", function startQuiz(event) {
     multiChoice.appendChild(createOptionBtn(currentQuestion[1].choice2));
     multiChoice.appendChild(createOptionBtn(currentQuestion[1].choice3));
     multiChoice.appendChild(createOptionBtn(currentQuestion[1].choice4));
-
-        // score counter
-    var choice1 = document.querySelector("#choice1");
-    var choice2 = document.querySelector("#choice2");
-    var choice3 = document.querySelector("#choice3");
-    var choice4 = document.querySelector("#choice4");
-    var score = 0; 
-
-
+    console.log (currentQuestion[2].correct);
 
     function secondQuestion() {
 
@@ -72,8 +86,8 @@ startQuizBtn.addEventListener("click", function startQuiz(event) {
         document.querySelector("#choice2").textContent = "Test2.2";
         document.querySelector("#choice3").textContent = "Test2.3";
         document.querySelector("#choice4").textContent = "Test2.4";
+        console.log (currentQuestion[2].correct);
 
-        return currentQuestion;
     };
 
 
@@ -90,7 +104,7 @@ startQuizBtn.addEventListener("click", function startQuiz(event) {
         document.querySelector("#choice2").textContent = "Test3.2";
         document.querySelector("#choice3").textContent = "Test3.3";
         document.querySelector("#choice4").textContent = "Test3.4";
-
+        console.log (currentQuestion[2].correct);
     };
 
     function forthQuestion() {
@@ -106,7 +120,12 @@ startQuizBtn.addEventListener("click", function startQuiz(event) {
         document.querySelector("#choice2").textContent = "Test4.2";
         document.querySelector("#choice3").textContent = "Test4.3";
         document.querySelector("#choice4").textContent = "Test4.4";
+        console.log (currentQuestion[2].correct);
+    };
 
+        // End of Quiz
+    function endQuiz () {
+        currentQuestion = finalScore;
     };
 
         // score counter
@@ -120,47 +139,51 @@ startQuizBtn.addEventListener("click", function startQuiz(event) {
         if (selection === currentQuestion[2].correct) {
             score++;
             console.log(score);
+            console.log(currentQuestion[0].question);
+        } else {
+            duduct10();
         };
     };
 
+        // Answer selection listeners 
     choice1.addEventListener("click", function scoreCalcChoice1() {
         scoreCalc(currentQuestion[1].choice1);
-        if (currentQuestion = question1) {
+        if (currentQuestion === question1) {
             secondQuestion();
-        } else if (currentQuestion = question2) {
+        } else if (currentQuestion === question2) {
             thirdQuestion();
-        } else if (currentQuestion = question3) {
+        } else if (currentQuestion === question3) {
             forthQuestion();
         };
     } );
 
     choice2.addEventListener("click", function scoreCalcChoice2() {
         scoreCalc(currentQuestion[1].choice2);
-        if (currentQuestion = question1) {
+        if (currentQuestion === question1) {
             secondQuestion();
-        } else if (currentQuestion = question2) {
+        } else if (currentQuestion === question2) {
             thirdQuestion();
-        } else if (currentQuestion = question3) {
+        } else if (currentQuestion === question3) {
             forthQuestion();
         };
     } );
     choice3.addEventListener("click", function scoreCalcChoice3() {
         scoreCalc(currentQuestion[1].choice3);
-        if (currentQuestion = question1) {
+        if (currentQuestion === question1) {
             secondQuestion();
-        } else if (currentQuestion = question2) {
+        } else if (currentQuestion === question2) {
             thirdQuestion();
-        } else if (currentQuestion = question3) {
+        } else if (currentQuestion === question3) {
             forthQuestion();
         };
     } );
     choice4.addEventListener("click", function scoreCalcChoice4() {
-        scoreCalc(currentQuestion[1].choice3);
-        if (currentQuestion = question1) {
+        scoreCalc(currentQuestion[1].choice4);
+        if (currentQuestion === question1) {
             secondQuestion();
-        } else if (currentQuestion = question2) {
+        } else if (currentQuestion === question2) {
             thirdQuestion();
-        } else if (currentQuestion = question3) {
+        } else if (currentQuestion === question3) {
             forthQuestion();
         };
     } );
