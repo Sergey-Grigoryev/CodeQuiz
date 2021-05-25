@@ -28,6 +28,14 @@ var question4 = [
     {correct:"option 4"}];
 var finalScore = {};
 
+    // End of Quiz
+function endQuiz() {
+    currentQuestion = finalScore;
+    questions.textContent = ("Good Job! You completed the quiz.")
+    document.querySelector(".multiChoice").style.display = "none";
+    document.querySelector(".feedback").style.display = "none";
+};
+
     // 60 sec timer
 let timeRemaining = 59;
 function duduct10() {
@@ -39,6 +47,8 @@ function timer () {
         timeRemaining--;
         if (timeRemaining < 0) {
             clearInterval(timeInterval);
+            alert("Your time ran out!");
+            endQuiz();
         };
     }, 1000);
 };
@@ -48,6 +58,7 @@ startQuizBtn.addEventListener("click", function startQuiz(event) {
     event.preventDefault();
     timer();
     startQuizDiv.style.display = "none";
+    document.querySelector(".aboutQuiz").style.display = "none";
 
     // show the question
     currentQuestion = question1;
@@ -87,9 +98,7 @@ startQuizBtn.addEventListener("click", function startQuiz(event) {
         document.querySelector("#choice3").textContent = "Test2.3";
         document.querySelector("#choice4").textContent = "Test2.4";
         console.log (currentQuestion[2].correct);
-
     };
-
 
     function thirdQuestion() {
 
@@ -123,11 +132,6 @@ startQuizBtn.addEventListener("click", function startQuiz(event) {
         console.log (currentQuestion[2].correct);
     };
 
-        // End of Quiz
-    function endQuiz () {
-        currentQuestion = finalScore;
-    };
-
         // score counter
     var choice1 = document.querySelector("#choice1");
     var choice2 = document.querySelector("#choice2");
@@ -138,10 +142,12 @@ startQuizBtn.addEventListener("click", function startQuiz(event) {
     function scoreCalc(selection) {
         if (selection === currentQuestion[2].correct) {
             score++;
-            console.log(score);
-            console.log(currentQuestion[0].question);
+            document.querySelector(".feedback").style.display = "flex";
+            document.querySelector(".feedback").textContent = "Correct!";
         } else {
             duduct10();
+            document.querySelector(".feedback").style.display = "flex";
+            document.querySelector(".feedback").textContent = "Wrong! -10 sec";
         };
     };
 
@@ -154,7 +160,9 @@ startQuizBtn.addEventListener("click", function startQuiz(event) {
             thirdQuestion();
         } else if (currentQuestion === question3) {
             forthQuestion();
-        };
+        } else {
+            endQuiz();
+        }
     } );
 
     choice2.addEventListener("click", function scoreCalcChoice2() {
@@ -165,7 +173,9 @@ startQuizBtn.addEventListener("click", function startQuiz(event) {
             thirdQuestion();
         } else if (currentQuestion === question3) {
             forthQuestion();
-        };
+        } else {
+            endQuiz();
+        }
     } );
     choice3.addEventListener("click", function scoreCalcChoice3() {
         scoreCalc(currentQuestion[1].choice3);
@@ -175,7 +185,9 @@ startQuizBtn.addEventListener("click", function startQuiz(event) {
             thirdQuestion();
         } else if (currentQuestion === question3) {
             forthQuestion();
-        };
+        } else {
+            endQuiz();
+        }
     } );
     choice4.addEventListener("click", function scoreCalcChoice4() {
         scoreCalc(currentQuestion[1].choice4);
@@ -185,10 +197,10 @@ startQuizBtn.addEventListener("click", function startQuiz(event) {
             thirdQuestion();
         } else if (currentQuestion === question3) {
             forthQuestion();
-        };
+        } else {
+            endQuiz();
+        }
     } );
-    
-   console.log(score);
  
 });
 

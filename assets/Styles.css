@@ -3,10 +3,21 @@
     margin: 5px;
 }
 
-.questions, .feedback {
+.questions {
     display: flex;
     justify-content: center;
     margin: 5vh auto;
+}
+
+.aboutQuiz {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 0 15px 0;
+}
+
+.aboutQuiz p {
+    margin: 0;
 }
 
 .startQuizDiv {
@@ -44,9 +55,12 @@
 .feedback {
     display: none;          /*change after quiz starts*/ 
     background-color: rgba(128, 128, 128, 0.5);
-    padding: 5px 0 5px 0;
+    color: whitesmoke;
+    padding: 5px 0 5px 5px;
     width: 25vw;
     border-radius: 5px;
+    justify-content: center;
+    margin: 5vh auto;
 }
 
 .pastScores {
