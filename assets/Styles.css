@@ -28,21 +28,23 @@
 
 }
 
-.startQuizBtn {
+.startQuizBtn, .initialFormBtn {
     display: flex;
     justify-content: flex-start;
     background-color: blueviolet;
     color: whitesmoke;
     border-radius: 5px;
-
+    margin: auto 10px;
 }
+
 .multiChoice {
     display: none;
     justify-content: flex-start; 
     flex-direction: column;
-    align-items: flex-start;
-    width: 25vw;
+    /* align-items: flex-start; */
+    width: max-content;
     margin: auto;
+    padding-right: 10vw;
 }
 .multiChoiceBtn {
     display: flex;     /* change after start btn click */
@@ -61,8 +63,16 @@
     border-radius: 5px;
     justify-content: center;
     margin: 5vh auto;
+    opacity: 1;
+    transition: 2s;
+
 }
 
 .pastScores {
     display: none; /*change on eventListener click 'View High Scores' */ 
+}
+
+.initialsForm {
+    display: none;
+    justify-content: center;
 }

@@ -6,14 +6,17 @@ var pastScores = document.querySelector(".pastScores");
 var questions = document.querySelector(".questions");
 var multiChoiceBtn = document.querySelector(".multiChoiceBtn");
 var multiChoice = document.querySelector(".multiChoice");
+var initialsForm = document.querySelector(".initialsForm");
+var initialsFormBtn = document.querySelector(".initialsFormBtn");
+var initialsFormText = document.querySelector(".initialsFormText");
 
 var currentQuestion = {};
 
 // question objects
 var question1 = [
-    {question:"First question"}, 
-    {choice1:"option 1", choice2:"option 2", choice3:"option 3", choice4:"option 4"}, 
-    {correct:"option 1"}];
+    {question:"Which of the following is NOT a variable type in JS?"}, 
+    {choice1:"var", choice2:"let", choice3:"const", choice4:"thing"}, 
+    {correct:"thing"}];
 var question2 = [
     {question:"Second question"}, 
     {choice1:"option 1", choice2:"option 2", choice3:"option 3", choice4:"option 4"}, 
@@ -28,14 +31,6 @@ var question4 = [
     {correct:"option 4"}];
 var finalScore = {};
 
-    // End of Quiz
-function endQuiz() {
-    currentQuestion = finalScore;
-    questions.textContent = ("Good Job! You completed the quiz.")
-    document.querySelector(".multiChoice").style.display = "none";
-    document.querySelector(".feedback").style.display = "none";
-};
-
     // 60 sec timer
 let timeRemaining = 59;
 function duduct10() {
@@ -43,6 +38,10 @@ function duduct10() {
 };
 function timer () {    
     var timeInterval = setInterval(function() {
+        // stop timer after last question
+        if (currentQuestion === finalScore) {
+            clearInterval(timeInterval);
+        };
         secondsLeft.textContent = timeRemaining;
         timeRemaining--;
         if (timeRemaining < 0) {
@@ -51,6 +50,15 @@ function timer () {
             endQuiz();
         };
     }, 1000);
+};
+
+    // End of Quiz
+function endQuiz() {
+    currentQuestion = finalScore;
+    questions.textContent = ("Good Job! You completed the quiz.")
+    multiChoice.style.display = "none";
+    document.querySelector(".feedback").style.display = "none";
+    initialsForm.style.display = "flex";
 };
 
     //start of quiz
@@ -151,6 +159,14 @@ startQuizBtn.addEventListener("click", function startQuiz(event) {
         };
     };
 
+    initialsFormBtn.addEventListener("click", function saveScore() {
+        let savedScore = JSON.parse(localStorage.getItem("Score"));
+        if (score > savedScore) {
+            localStorage.setItem("Tester", JSON.stringify(initialsFormText.value));
+            localStorage.setItem("Score", JSON.stringify(score));
+        } 
+    });
+
         // Answer selection listeners 
     choice1.addEventListener("click", function scoreCalcChoice1() {
         scoreCalc(currentQuestion[1].choice1);
@@ -201,7 +217,17 @@ startQuizBtn.addEventListener("click", function startQuiz(event) {
             endQuiz();
         }
     } );
- 
+});
+
+let highTester = JSON.parse(localStorage.getItem("Tester"));
+let highScore = JSON.parse(localStorage.getItem("Score"));
+console.log(highScore, highTester);
+
+scoresLink.addEventListener("click", function showHighScore(event) {
+    event.preventDefault();
+    pastScores.style.display = "flex";
+
+    document.querySelector(".pastScoresHighest").textContent =  highTester + " scored: " + highScore;
 });
 
 

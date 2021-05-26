@@ -9,21 +9,26 @@
 </head>
 <body>
     <header>
-        <a class="scoresLink" href="">View High Scores</a>
+        <a class="scoresLink" href="">View High Score</a>
         <span class="secondsLeft">60</span>
         <span class="timer">Timer: </span>
         <ol class="pastScores">
-            <li></li>
+            <li class="pastScoresHighest"></li>
         </ol>
 
     </header>
     <main>
         <h1 class="questions">Coding Quiz!</h1>
         <div class="aboutQuiz">
-            <p>This is a quiz to text your knowledge of basic JavaScrip and Friends Trivia!</p>
-            <p>You have 60 sec to complete the quiz. Each WRONG answer will deduct 10 sec from your remaining time.</p>
-            <h3>Good Luck!</h3>
+            <p class="aboutQuizP">This is a quiz to text your knowledge of basic JavaScrip and Friends Trivia!</p>
+            <p class="aboutQuizP">You have 60 sec to complete the quiz. Each WRONG answer will deduct 10 sec from your remaining time.</p>
+            <h3 class="aboutQuizH3">Good Luck!</h3>
         </div>
+        <form class="initialsForm">
+            <label for="initials">Enter your initials:</label>
+            <input class="initialsFormText" type="text" name="initials">
+            <input class="initialsFormBtn" type="submit" value="View Score">
+        </form>
         <div class = "startQuizDiv">
             <button class="startQuizBtn">Start Quiz</button>
         </div>
