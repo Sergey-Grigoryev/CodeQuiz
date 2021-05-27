@@ -9,26 +9,23 @@
     margin: 5vh auto;
 }
 
-.aboutQuiz {
+.aboutQuiz, .aboutQuizP{
     display: flex;
     flex-direction: column;
     align-items: center;
     margin: 0 0 15px 0;
 }
 
-.aboutQuiz p {
-    margin: 0;
-}
+
 
 .startQuizDiv {
     display: flex;
     justify-content: center; 
     width: 25vw;
     margin: auto;
-
 }
 
-.startQuizBtn, .initialFormBtn {
+.startQuizBtn, .initialsFormBtn {
     display: flex;
     justify-content: flex-start;
     background-color: blueviolet;
@@ -63,9 +60,6 @@
     border-radius: 5px;
     justify-content: center;
     margin: 5vh auto;
-    opacity: 1;
-    transition: 2s;
-
 }
 
 .pastScores {
