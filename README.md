@@ -8,7 +8,7 @@
 * JavaScript
 * Web-API
 
-![Screenshot of Quiz](.assets/Images/CodeQuizScreenshot.png)
+![Screenshot of Quiz](./assets/Images/CodeQuizScreenshot.png)
 
 ### Functions:
 * CSS and HTML are created & modifies in JS
