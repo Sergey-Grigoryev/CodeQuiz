@@ -74,7 +74,6 @@ startQuizBtn.addEventListener("click", function startQuiz(event) {
         document.querySelector("#choice2").textContent = currentQuestion[1].choice2;
         document.querySelector("#choice3").textContent = currentQuestion[1].choice3;
         document.querySelector("#choice4").textContent = currentQuestion[1].choice4;
-        console.log (currentQuestion[2].correct);
     };
 
     function thirdQuestion() {
@@ -90,7 +89,6 @@ startQuizBtn.addEventListener("click", function startQuiz(event) {
         document.querySelector("#choice2").textContent = currentQuestion[1].choice2;
         document.querySelector("#choice3").textContent = currentQuestion[1].choice3;
         document.querySelector("#choice4").textContent = currentQuestion[1].choice4;
-        console.log (currentQuestion[2].correct);
     };
 
     function forthQuestion() {
@@ -106,7 +104,6 @@ startQuizBtn.addEventListener("click", function startQuiz(event) {
         document.querySelector("#choice2").textContent = currentQuestion[1].choice2;
         document.querySelector("#choice3").textContent = currentQuestion[1].choice3;
         document.querySelector("#choice4").textContent = currentQuestion[1].choice4;
-        console.log (currentQuestion[2].correct);
     };
 
         // score counter + feedback
@@ -179,7 +176,6 @@ startQuizBtn.addEventListener("click", function startQuiz(event) {
         }
     } );
     choice3.addEventListener("click", function (event) {
-        console.log(event.target)
         scoreCalc(currentQuestion[1].choice3);
         if (currentQuestion === question1) {
             secondQuestion();
@@ -229,7 +225,6 @@ function duduct10() {
 let highTester = JSON.parse(localStorage.getItem("Tester"));
 let highScore = JSON.parse(localStorage.getItem("Score"));
 let viewHighScore = false;
-console.log(highTester);
 
 scoresLink.addEventListener("click", function showHighScore(event) {
     event.preventDefault();
